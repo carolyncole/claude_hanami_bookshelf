@@ -1,32 +1,18 @@
 # frozen_string_literal: true
 
 module Bookshelf
-  # Repos: all querying and persistence, one per table.
   module Repos
-    # Persistence and querying for {Bookshelf::Structs::Book}.
+    # Repository for persisting and querying {Bookshelf::Structs::Book} records.
     #
-    # This is the only place in the app that should talk to the `books`
-    # relation directly — callers (actions, operations, rake tasks) go
-    # through these methods instead of touching {Bookshelf::Relations::Books}.
-    #
-    # ROM does not manage `created_at`/`updated_at` automatically, so every
-    # write method below stamps them by hand.
+    # @see Bookshelf::Relations::Books
     class BookRepo < Bookshelf::DB::Repo
-      # All books in the store.
-      #
-      # @return [Array<Bookshelf::Structs::Book>]
+      # @return [Array<Bookshelf::Structs::Book>] every book in the table
       def all = books.to_a
 
-      # Find a single book by primary key.
+      # Creates a new book, stamping `created_at`/`updated_at` with the
+      # current time.
       #
-      # @param id [Integer] the book's id
-      # @return [Bookshelf::Structs::Book]
-      # @raise [ROM::TupleCountMismatchError] if no book has that id
-      def get(id) = books.by_pk(id).one!
-
-      # Create a new book.
-      #
-      # @param attributes [Hash] attributes for the new book (e.g. `:title`, `:author`)
+      # @param attributes [Hash] book attributes, e.g. `title:` and `author:`
       # @return [Bookshelf::Structs::Book] the created book
       def create(attributes)
         attributes[:created_at] = Time.now
@@ -34,22 +20,35 @@ module Bookshelf
         books.changeset(:create, attributes).commit
       end
 
-      # Update an existing book.
+      # @return [Integer] the number of books in the table
+      def count = books.count
+
+      # Deletes the book with the given id.
       #
-      # @param id [Integer] the book's id
-      # @param attributes [Hash] attributes to change
+      # @param id [Integer] primary key of the book to delete
+      # @return [Bookshelf::Structs::Book] the deleted book
+      def delete(id)
+        books.by_pk(id).changeset(:delete).commit
+      end
+
+      # @param id [Integer] primary key of the book to fetch
+      # @return [Bookshelf::Structs::Book] the matching book
+      # @raise [ROM::TupleCountMismatchError] if no book matches the id
+      def get(id) = books.by_pk(id).one!
+
+      # @return [Bookshelf::Structs::Book, nil] the most recently inserted book
+      def last = books.last
+
+      # Updates the given attributes on a book, stamping `updated_at` with
+      # the current time.
+      #
+      # @param id [Integer] primary key of the book to update
+      # @param attributes [Hash] attributes to merge into the existing record
       # @return [Bookshelf::Structs::Book] the updated book
       def update(id, attributes)
         attributes[:updated_at] = Time.now
         books.by_pk(id).changeset(:update, attributes).commit
-        get(id)
       end
-
-      # Delete a book.
-      #
-      # @param id [Integer] the book's id
-      # @return [Bookshelf::Structs::Book] the deleted book, as it was before deletion
-      def delete(id) = books.by_pk(id).changeset(:delete).commit
     end
   end
 end

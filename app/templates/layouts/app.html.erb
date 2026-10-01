@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Bookshelf" %></title>
+    <title>Bookshelf</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Bookshelf">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags&.html_safe %>
 
-    <%# No hanami-assets/esbuild pipeline (this app was generated with
-        --skip-assets) — just a plain file at public/application.css,
-        ported from the Rails app and served via a Rack::Static mount in
-        config/app.rb. %>
-    <link rel="stylesheet" href="/application.css">
+    <%= favicon_tag %>
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_tag "app", "data-turbo-track": "reload" %>
   </head>
 
   <body>

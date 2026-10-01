@@ -3485,3 +3485,783 @@
   {id: "1"}
 [bookshelf] [DEBUG] [2026-10-01 16:19:02 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`author`, `books`.`created_at`, `books`.`title`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id` DESC LIMIT 1
 [bookshelf] [DEBUG] [2026-10-01 16:19:02 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT * FROM `sqlite_master` WHERE ((`name` != 'sqlite_sequence') AND (`type` = 'table'))
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 3ms DELETE FROM `books`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms SELECT NULL AS 'nil' FROM `sqlite_sequence` LIMIT 1
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms DELETE FROM `sqlite_sequence` WHERE (`name` = 'books')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] GET 200 75ms 127.0.0.1 /books/new -
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 2ms INSERT INTO `books` (`author`, `title`, `created_at`, `updated_at`) VALUES ('Jane Doe', 'awesome book', '2026-10-01 17:21:04.639778', '2026-10-01 17:21:04.639779')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] POST 302 7ms 127.0.0.1 /books 46
+  {book: {author: "Jane Doe", title: "awesome book"}}
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] GET 200 5ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.655696', '2026-10-01 17:21:04.655696')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] GET 200 5ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] DELETE 303 3ms 127.0.0.1 /books/1 14
+  {_method: "delete", id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] GET 200 4ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.688294', '2026-10-01 17:21:04.688294')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.696737', '2026-10-01 17:21:04.696737')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.704075', '2026-10-01 17:21:04.704075')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('awesome book', 'Jane Doe', '2026-10-01 17:21:04.711934', '2026-10-01 17:21:04.711935')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Book One', 'Author One', '2026-10-01 17:21:04.717164', '2026-10-01 17:21:04.717164')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Book Two', 'Author Two', '2026-10-01 17:21:04.719474', '2026-10-01 17:21:04.719474')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = -1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:04.724806', '2026-10-01 17:21:04.724806')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:04.728908', '2026-10-01 17:21:04.728908')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:04.732722', '2026-10-01 17:21:04.732722')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:04.737833', '2026-10-01 17:21:04.737833')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms UPDATE `books` SET `title` = 'Hanami in Action (2nd ed)', `updated_at` = '2026-10-01 17:21:04.740146' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.748578', '2026-10-01 17:21:04.748578')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:04.751097', '2026-10-01 17:21:04.751097')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.769935', '2026-10-01 17:21:04.769935')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:04.772768', '2026-10-01 17:21:04.772768')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.780621', '2026-10-01 17:21:04.780622')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.786487', '2026-10-01 17:21:04.786487')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:04.788789', '2026-10-01 17:21:04.788790')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.800209', '2026-10-01 17:21:04.800209')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms UPDATE `books` SET `title` = 'book 1 update', `updated_at` = '2026-10-01 17:21:04.802938' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.807406', '2026-10-01 17:21:04.807406')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.825295', '2026-10-01 17:21:04.825295')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:04.828550', '2026-10-01 17:21:04.828550')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] GET 200 6ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] GET 200 6ms 127.0.0.1 /books/1/edit -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms UPDATE `books` SET `author` = 'author 1', `title` = 'book 1 update', `updated_at` = '2026-10-01 17:21:04.849579' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] PATCH 303 3ms 127.0.0.1 /books/1 61
+  {_method: "patch", book: {author: "author 1", title: "book 1 update"}, id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] GET 200 3ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.865220', '2026-10-01 17:21:04.865220')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:04.867726', '2026-10-01 17:21:04.867727')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] GET 200 4ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.877737', '2026-10-01 17:21:04.877738')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:04.884939', '2026-10-01 17:21:04.884939')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:04 +0000] GET 200 3ms 127.0.0.1 / -
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:04.897608', '2026-10-01 17:21:04.897609')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:04.901350', '2026-10-01 17:21:04.901350')
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:04 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT * FROM `sqlite_master` WHERE ((`name` != 'sqlite_sequence') AND (`type` = 'table'))
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 3ms DELETE FROM `books`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT NULL AS 'nil' FROM `sqlite_sequence` LIMIT 1
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms DELETE FROM `sqlite_sequence` WHERE (`name` = 'books')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:11.688882', '2026-10-01 17:21:11.688882')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:11.748194', '2026-10-01 17:21:11.748194')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:11.756035', '2026-10-01 17:21:11.756035')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('awesome book', 'Jane Doe', '2026-10-01 17:21:11.777218', '2026-10-01 17:21:11.777219')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:11.789812', '2026-10-01 17:21:11.789813')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:11.793756', '2026-10-01 17:21:11.793756')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] GET 200 11ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:11.812425', '2026-10-01 17:21:11.812425')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Book One', 'Author One', '2026-10-01 17:21:11.818337', '2026-10-01 17:21:11.818338')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Book Two', 'Author Two', '2026-10-01 17:21:11.820450', '2026-10-01 17:21:11.820450')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:11.824602', '2026-10-01 17:21:11.824602')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms UPDATE `books` SET `title` = 'Hanami in Action (2nd ed)', `updated_at` = '2026-10-01 17:21:11.827069' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:11.831496', '2026-10-01 17:21:11.831496')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = -1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:11.838059', '2026-10-01 17:21:11.838059')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:11.842350', '2026-10-01 17:21:11.842350')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] GET 200 4ms 127.0.0.1 /books/new -
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms INSERT INTO `books` (`author`, `title`, `created_at`, `updated_at`) VALUES ('Jane Doe', 'awesome book', '2026-10-01 17:21:11.858546', '2026-10-01 17:21:11.858546')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] POST 302 3ms 127.0.0.1 /books 46
+  {book: {author: "Jane Doe", title: "awesome book"}}
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:11.870551', '2026-10-01 17:21:11.870552')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms UPDATE `books` SET `title` = 'book 1 update', `updated_at` = '2026-10-01 17:21:11.872914' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] GET 200 4ms 127.0.0.1 / -
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:11.882352', '2026-10-01 17:21:11.882353')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:11.884734', '2026-10-01 17:21:11.884734')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] GET 200 3ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:11.900872', '2026-10-01 17:21:11.900872')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:11.903809', '2026-10-01 17:21:11.903809')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] GET 200 5ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:11.917854', '2026-10-01 17:21:11.917854')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:11.920248', '2026-10-01 17:21:11.920248')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] GET 200 5ms 127.0.0.1 /books/1/edit -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms UPDATE `books` SET `author` = 'author 1', `title` = 'book 1 update', `updated_at` = '2026-10-01 17:21:11.936969' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] PATCH 303 3ms 127.0.0.1 /books/1 61
+  {_method: "patch", book: {author: "author 1", title: "book 1 update"}, id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:11.946708', '2026-10-01 17:21:11.946709')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:11.949146', '2026-10-01 17:21:11.949147')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:11.982139', '2026-10-01 17:21:11.982139')
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [INFO] [2026-10-01 17:21:11 +0000] DELETE 303 2ms 127.0.0.1 /books/1 14
+  {_method: "delete", id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:11 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:12 +0000] GET 200 3ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:12.004543', '2026-10-01 17:21:12.004543')
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:12.008508', '2026-10-01 17:21:12.008508')
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:12.013140', '2026-10-01 17:21:12.013140')
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:12.018903', '2026-10-01 17:21:12.018904')
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:12.026750', '2026-10-01 17:21:12.026750')
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT * FROM `sqlite_master` WHERE ((`name` != 'sqlite_sequence') AND (`type` = 'table'))
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 3ms DELETE FROM `books`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT NULL AS 'nil' FROM `sqlite_sequence` LIMIT 1
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms DELETE FROM `sqlite_sequence` WHERE (`name` = 'books')
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:12.860616', '2026-10-01 17:21:12.860617')
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:12.924294', '2026-10-01 17:21:12.924294')
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:12.926793', '2026-10-01 17:21:12.926794')
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:12 +0000] GET 200 22ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:12 +0000] GET 200 6ms 127.0.0.1 /books/1/edit -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms UPDATE `books` SET `author` = 'author 1', `title` = 'book 1 update', `updated_at` = '2026-10-01 17:21:12.973132' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:12 +0000] PATCH 303 4ms 127.0.0.1 /books/1 61
+  {_method: "patch", book: {author: "author 1", title: "book 1 update"}, id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:12 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('awesome book', 'Jane Doe', '2026-10-01 17:21:12.986255', '2026-10-01 17:21:12.986256')
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:12 +0000] GET 200 4ms 127.0.0.1 / -
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:12 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:12.997960', '2026-10-01 17:21:12.997960')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:13.005103', '2026-10-01 17:21:13.005103')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:13.012201', '2026-10-01 17:21:13.012201')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:13.019447', '2026-10-01 17:21:13.019447')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:13.028224', '2026-10-01 17:21:13.028224')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:13.037730', '2026-10-01 17:21:13.037730')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:13.040533', '2026-10-01 17:21:13.040533')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:13.047769', '2026-10-01 17:21:13.047769')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms UPDATE `books` SET `title` = 'book 1 update', `updated_at` = '2026-10-01 17:21:13.050899' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:13.055258', '2026-10-01 17:21:13.055258')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:13.062985', '2026-10-01 17:21:13.062985')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms UPDATE `books` SET `title` = 'Hanami in Action (2nd ed)', `updated_at` = '2026-10-01 17:21:13.065155' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:13.069328', '2026-10-01 17:21:13.069328')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = -1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:13.075645', '2026-10-01 17:21:13.075645')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:13.080020', '2026-10-01 17:21:13.080020')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Book One', 'Author One', '2026-10-01 17:21:13.085139', '2026-10-01 17:21:13.085139')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Book Two', 'Author Two', '2026-10-01 17:21:13.087522', '2026-10-01 17:21:13.087522')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:13.091521', '2026-10-01 17:21:13.091521')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:13.095435', '2026-10-01 17:21:13.095435')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [INFO] [2026-10-01 17:21:13 +0000] GET 200 4ms 127.0.0.1 /books/new -
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`author`, `title`, `created_at`, `updated_at`) VALUES ('Jane Doe', 'awesome book', '2026-10-01 17:21:13.108983', '2026-10-01 17:21:13.108984')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:13 +0000] POST 302 3ms 127.0.0.1 /books 46
+  {book: {author: "Jane Doe", title: "awesome book"}}
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:13 +0000] GET 200 5ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:13.121962', '2026-10-01 17:21:13.121962')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:13.125012', '2026-10-01 17:21:13.125012')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:13 +0000] GET 200 3ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:13.148389', '2026-10-01 17:21:13.148389')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:13.151070', '2026-10-01 17:21:13.151070')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 9ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:13 +0000] GET 200 5ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:13.174756', '2026-10-01 17:21:13.174757')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:13.177111', '2026-10-01 17:21:13.177111')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:13 +0000] GET 200 5ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:13.187447', '2026-10-01 17:21:13.187447')
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:13 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [INFO] [2026-10-01 17:21:13 +0000] DELETE 303 2ms 127.0.0.1 /books/1 14
+  {_method: "delete", id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:13 +0000] GET 200 3ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:13 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT * FROM `sqlite_master` WHERE ((`name` != 'sqlite_sequence') AND (`type` = 'table'))
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 4ms DELETE FROM `books`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT NULL AS 'nil' FROM `sqlite_sequence` LIMIT 1
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms DELETE FROM `sqlite_sequence` WHERE (`name` = 'books')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] GET 200 60ms 127.0.0.1 / -
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.076567', '2026-10-01 17:21:14.076568')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.096205', '2026-10-01 17:21:14.096205')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.111203', '2026-10-01 17:21:14.111203')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.123931', '2026-10-01 17:21:14.123931')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:14.133532', '2026-10-01 17:21:14.133532')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:14.139611', '2026-10-01 17:21:14.139611')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.144448', '2026-10-01 17:21:14.144448')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.156579', '2026-10-01 17:21:14.156580')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] GET 200 5ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] DELETE 303 3ms 127.0.0.1 /books/1 14
+  {_method: "delete", id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] GET 200 3ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:14.183461', '2026-10-01 17:21:14.183462')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = -1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:14.189373', '2026-10-01 17:21:14.189373')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Book One', 'Author One', '2026-10-01 17:21:14.193518', '2026-10-01 17:21:14.193518')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Book Two', 'Author Two', '2026-10-01 17:21:14.196028', '2026-10-01 17:21:14.196028')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:14.199935', '2026-10-01 17:21:14.199935')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms UPDATE `books` SET `title` = 'Hanami in Action (2nd ed)', `updated_at` = '2026-10-01 17:21:14.202836' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('Hanami in Action', 'Sean Collins', '2026-10-01 17:21:14.207695', '2026-10-01 17:21:14.207695')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.212706', '2026-10-01 17:21:14.212706')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:14.214971', '2026-10-01 17:21:14.214971')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('awesome book', 'Jane Doe', '2026-10-01 17:21:14.225558', '2026-10-01 17:21:14.225558')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.230528', '2026-10-01 17:21:14.230528')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.238551', '2026-10-01 17:21:14.238551')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:14.241096', '2026-10-01 17:21:14.241096')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] GET 200 5ms 127.0.0.1 /books/1/edit -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms UPDATE `books` SET `author` = 'author 1', `title` = 'book 1 update', `updated_at` = '2026-10-01 17:21:14.258101' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] PATCH 303 3ms 127.0.0.1 /books/1 61
+  {_method: "patch", book: {author: "author 1", title: "book 1 update"}, id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.268564', '2026-10-01 17:21:14.268564')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms UPDATE `books` SET `title` = 'book 1 update', `updated_at` = '2026-10-01 17:21:14.271085' WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] GET 200 4ms 127.0.0.1 /books/new -
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`author`, `title`, `created_at`, `updated_at`) VALUES ('Jane Doe', 'awesome book', '2026-10-01 17:21:14.282549', '2026-10-01 17:21:14.282549')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] POST 302 3ms 127.0.0.1 /books 46
+  {book: {author: "Jane Doe", title: "awesome book"}}
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] GET 200 4ms 127.0.0.1 /books/1 -
+  {id: "1"}
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.293502', '2026-10-01 17:21:14.293502')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:14.295821', '2026-10-01 17:21:14.295821')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] GET 200 14ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [INFO] [2026-10-01 17:21:14 +0000] GET 200 4ms 127.0.0.1 /books -
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 2ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.328316', '2026-10-01 17:21:14.328317')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:14.331596', '2026-10-01 17:21:14.331597')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.343951', '2026-10-01 17:21:14.343952')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`books`.`id` = 1) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms DELETE FROM `books` WHERE (`books`.`id` = 1)
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 1', 'author 1', '2026-10-01 17:21:14.349782', '2026-10-01 17:21:14.349783')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (1)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms INSERT INTO `books` (`title`, `author`, `created_at`, `updated_at`) VALUES ('book 2', 'author 2', '2026-10-01 17:21:14.352188', '2026-10-01 17:21:14.352188')
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` WHERE (`id` IN (2)) ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 1ms ROLLBACK
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms BEGIN
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms SELECT `books`.`id`, `books`.`title`, `books`.`author`, `books`.`created_at`, `books`.`updated_at` FROM `books` ORDER BY `books`.`id`
+[bookshelf] [DEBUG] [2026-10-01 17:21:14 +0000] SQL sqlite 0ms ROLLBACK

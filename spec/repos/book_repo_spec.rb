@@ -3,54 +3,60 @@
 RSpec.describe Bookshelf::Repos::BookRepo, :db do
   subject(:repo) { described_class.new }
 
-  describe "#create" do
-    it "persists a book and stamps timestamps" do
-      book = repo.create(title: "Hanami in Action", author: "Sean Collins")
-
-      expect(book.title).to eq("Hanami in Action")
-      expect(book.author).to eq("Sean Collins")
-      expect(book.created_at).to be_a(Time)
-      expect(book.updated_at).to be_a(Time)
-    end
-  end
+  let!(:book) { repo.create(title: "Practical Object-Oriented Design", author: "Sandi Metz") }
 
   describe "#all" do
     it "returns every book" do
-      repo.create(title: "Book One", author: "Author One")
-      repo.create(title: "Book Two", author: "Author Two")
+      expect(repo.all).to contain_exactly(book)
+    end
+  end
 
-      expect(repo.all.map(&:title)).to contain_exactly("Book One", "Book Two")
+  describe "#count" do
+    it "returns the number of books" do
+      expect(repo.count).to eq(1)
     end
   end
 
   describe "#get" do
     it "returns the book with the given id" do
-      book = repo.create(title: "Hanami in Action", author: "Sean Collins")
-
-      expect(repo.get(book.id).id).to eq(book.id)
+      expect(repo.get(book.id)).to eq(book)
     end
 
-    it "raises when the book does not exist" do
+    it "raises when no book matches the id" do
       expect { repo.get(-1) }.to raise_error(ROM::TupleCountMismatchError)
     end
   end
 
+  describe "#last" do
+    it "returns the most recently inserted book" do
+      newer = repo.create(title: "Design Patterns", author: "Gang of Four")
+
+      expect(repo.last).to eq(newer)
+    end
+  end
+
+  describe "#create" do
+    it "persists a new book with timestamps" do
+      created = repo.create(title: "99 Bottles of OOP", author: "Sandi Metz")
+
+      expect(created.title).to eq("99 Bottles of OOP")
+      expect(created.author).to eq("Sandi Metz")
+      expect(created.created_at).not_to be_nil
+      expect(created.updated_at).not_to be_nil
+    end
+  end
+
   describe "#update" do
-    it "updates the given attributes and bumps updated_at" do
-      book = repo.create(title: "Hanami in Action", author: "Sean Collins")
+    it "updates the given attributes and refreshes updated_at" do
+      updated = repo.update(book.id, title: "Updated Title")
 
-      updated = repo.update(book.id, title: "Hanami in Action (2nd ed)")
-
-      expect(updated.title).to eq("Hanami in Action (2nd ed)")
-      expect(updated.author).to eq("Sean Collins")
+      expect(updated.title).to eq("Updated Title")
       expect(updated.updated_at).to be >= book.updated_at
     end
   end
 
   describe "#delete" do
     it "removes the book" do
-      book = repo.create(title: "Hanami in Action", author: "Sean Collins")
-
       repo.delete(book.id)
 
       expect(repo.all).to be_empty

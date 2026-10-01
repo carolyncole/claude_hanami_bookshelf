@@ -1,14 +1,20 @@
 # frozen_string_literal: true
 
-RSpec.describe "relations.books", :db do
-  subject(:books) { Hanami.app["relations.books"] }
+RSpec.describe Bookshelf::Relations::Books, :db do
+  subject(:relation) { Hanami.app["relations.books"] }
 
-  it "infers the schema from the books table" do
-    expect(books.schema.map(&:name)).to contain_exactly(:id, :title, :author, :created_at, :updated_at)
+  it "reads an empty books table" do
+    expect(relation.to_a).to eq([])
   end
 
-  it "is a plain schema/dataset wrapper with no query or persistence behavior" do
-    expect(books).to be_a(Bookshelf::Relations::Books)
-    expect(books.to_a).to eq([])
+  it "reads rows inserted directly into the books table" do
+    relation.insert(
+      title: "Design Patterns",
+      author: "Gang of Four",
+      created_at: Time.now,
+      updated_at: Time.now
+    )
+
+    expect(relation.to_a.map { |row| row[:title] }).to eq(["Design Patterns"])
   end
 end

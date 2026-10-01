@@ -3,19 +3,22 @@
 module Bookshelf
   module Actions
     module Books
-      # `DELETE /books/:id` — ported from Rails' `BooksController#destroy`.
+      # `DELETE /books/:id` — deletes a book, then redirects to the books index with a flash
+      # notice.
       class Destroy < Bookshelf::Action
         include Deps["repos.book_repo"]
 
-        # Deletes the book, then redirects to the index.
-        #
-        # @param request [Hanami::Action::Request] `params[:id]` is the book's id
-        # @param response [Hanami::Action::Response]
-        # @return [void]
+        params do
+          required(:id).filled(:integer)
+        end
+
+        # @api private
         def handle(request, response)
-          book_repo.delete(request.params[:id].to_i)
-          response.flash[:notice] = "Book was successfully destroyed."
-          response.redirect_to("/books", status: 303)
+          if request.params.valid?
+            book_repo.delete(request.params[:id])
+            response.flash[:notice] = "Book was successfully destroyed"
+            response.redirect_to routes.path(:books)
+          end
         end
       end
     end

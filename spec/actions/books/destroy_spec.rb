@@ -1,16 +1,19 @@
 # frozen_string_literal: true
 
 RSpec.describe Bookshelf::Actions::Books::Destroy, :db do
-  let(:repo) { Bookshelf::Repos::BookRepo.new }
-  let(:book) { repo.create(title: "book 1", author: "author 1") }
-  let(:params) { {"id" => book.id.to_s} }
+  subject(:action) { described_class.new }
 
-  it "deletes the book and redirects to the index" do
-    response = subject.call(params)
+  let!(:book) { Bookshelf::Repos::BookRepo.new.create(title: "book 1", author: "author 1") }
 
-    expect(repo.all).to be_empty
+  it "deletes the book" do
+    expect { action.call(id: book.id.to_s) }.to change { Bookshelf::Repos::BookRepo.new.count }.by(-1)
+  end
 
-    expect(response).to be_redirect
-    expect(response.headers["location"]).to eq("/books")
+  it "redirects to the books index with a flash notice" do
+    response = action.call(id: book.id.to_s)
+
+    expect(response.status).to eq(302)
+    expect(response.headers["Location"]).to eq("/books")
+    expect(response.flash.next[:notice]).to eq("Book was successfully destroyed")
   end
 end
