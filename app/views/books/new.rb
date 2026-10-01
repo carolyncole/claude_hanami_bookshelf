@@ -2,22 +2,35 @@
 
 module Bookshelf
   module Views
-    # View classes for the `Book` resource, one per action.
     module Books
-      # Presenter for the new-book form page. Ported from Rails'
-      # app/views/books/new.html.erb (`@book = Book.new`).
+      # View for {Bookshelf::Actions::Books::New}, also reused by
+      # {Bookshelf::Actions::Books::Create} to re-render the form on failure.
       #
-      # There's no Hanami equivalent of an unsaved `ActiveRecord` instance —
-      # {Bookshelf::Structs::Book} is immutable and backed by a real row, so
-      # it can't represent a blank, not-yet-persisted book. A plain
-      # `Struct` with the same `id`/`title`/`author` readers (all nil)
-      # stands in instead; the `_form` partial only needs those readers.
+      # Exposes the same `form_submit`/`form_method`/`form_path`/`book` locals as
+      # {Bookshelf::Views::Books::Edit} so both views can share `_form.html.erb`.
       class New < Bookshelf::View
-        # Stand-in for an unsaved book — same reader interface as
-        # {Bookshelf::Structs::Book} (`id`, `title`, `author`), all nil.
-        BLANK_BOOK = Struct.new(:id, :title, :author).new(nil, nil, nil)
+        include Deps["repos.book_repo"]
 
-        expose(:book) { BLANK_BOOK }
+        # @!method form_submit
+        #   @return [String] the form's submit button label
+        expose :form_submit, default: "Create Book"
+
+        # @!method form_method
+        #   @return [String] the HTTP method the form submits with
+        expose :form_method, default: "POST"
+
+        # @!method form_path
+        #   @return [String] the path the form submits to
+        expose :form_path do |context:|
+          context.routes.path(:books)
+        end
+
+        # @!method book
+        #   @return [Hash, nil] the submitted `book` params, re-populating the form after a
+        #     failed create
+        expose :book do |context:|
+          context.request.params[:book]
+        end
       end
     end
   end

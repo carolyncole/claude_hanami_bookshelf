@@ -3,11 +3,16 @@
 module Bookshelf
   module Views
     module Books
-      # Presenter for the book show page. Ported from Rails'
-      # app/views/books/show.html.erb.
+      # View for {Bookshelf::Actions::Books::Show}.
       class Show < Bookshelf::View
-        expose :book
-        expose :notice
+        include Deps["repos.book_repo"]
+
+        # @!method book
+        #   @return [Bookshelf::Structs::Book] the book matching the `id` route param
+        #   @raise [ROM::TupleCountMismatchError] if no book matches `id`
+        expose :book do |id:|
+          book_repo.get(id)
+        end
       end
     end
   end

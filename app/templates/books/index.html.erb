@@ -1,6 +1,4 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Books" %>
+<p style="color: green"><%= flash[:notice] %></p>
 
 <h1>Welcome to the Bookshelf</h1>
 
@@ -9,10 +7,10 @@
     <div class="book">
       <%= render "book", book: book %>
       <p>
-        <a href="/books/<%= book.id %>">Show this book</a>
+        <%= link_to "Show this book", routes.path(:book, id: book.id) %>
       </p>
     </div>
   <% end %>
 </div>
 
-<a href="/books/new" class="btn btn-primary">New book</a>
+<%= link_to "New book", routes.path(:new_book), class: "btn btn-primary" %>

@@ -3,19 +3,16 @@
 module Bookshelf
   module Actions
     module Books
-      # `GET /books/:id/edit` — ported from Rails' `BooksController#edit`.
+      # `GET /books/:id/edit` — renders the edit form, pre-filled with the book's current values.
+      #
+      # Has no logic of its own: {Bookshelf::Views::Books::Edit} does the work of fetching the
+      # book (via `id`) and exposing it to the form.
+      #
+      # @see Bookshelf::Views::Books::Edit
+      # @see Bookshelf::Actions::Books::Update
       class Edit < Bookshelf::Action
-        include Deps["repos.book_repo"]
-
-        # Exposes the book being edited to the paired view
-        # ({Bookshelf::Views::Books::Edit}).
-        #
-        # @param request [Hanami::Action::Request] `params[:id]` is the book's id
-        # @param response [Hanami::Action::Response]
-        # @return [void]
-        # @raise [ROM::TupleCountMismatchError] if no book has that id
+        # @api private
         def handle(request, response)
-          response[:book] = book_repo.get(request.params[:id].to_i)
         end
       end
     end

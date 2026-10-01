@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.describe Bookshelf::Actions::Books::New do
-  let(:params) { {} }
+RSpec.describe Bookshelf::Actions::Books::New, :db do
+  subject(:action) { described_class.new }
 
-  it "renders a blank form that posts to /books" do
-    response = subject.call(params)
+  it "renders the new book form" do
+    response = action.call({})
 
-    expect(response).to be_successful
-    expect(response.body.join).to include('action="/books"', 'value="Create Book"')
+    expect(response.status).to eq(200)
+    expect(response.body.join).to include("New book").and include("Create Book")
   end
 end

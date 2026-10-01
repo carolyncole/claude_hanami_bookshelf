@@ -3,13 +3,15 @@
 module Bookshelf
   module Views
     module Books
-      # Presenter for the books index page. Ported from Rails'
-      # app/views/books/index.html.erb — `@books` becomes the `books`
-      # exposure, flash `notice` becomes a plain exposure (nil until the
-      # index action sets it from flash).
+      # View for {Bookshelf::Actions::Books::Index}.
       class Index < Bookshelf::View
-        expose :books
-        expose :notice
+        include Deps["repos.book_repo"]
+
+        # @!method books
+        #   @return [Array<Bookshelf::Structs::Book>] every book
+        expose :books do
+          book_repo.all
+        end
       end
     end
   end

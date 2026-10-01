@@ -3,23 +3,32 @@
 module Bookshelf
   module Actions
     module Books
-      # `PATCH /books/:id` — ported from Rails' `BooksController#update` (no
-      # model validations, so no failure branch — see {Create}).
+      # `PATCH /books/:id` — updates a book from `book: {title:, author:}` params.
+      #
+      # On success, redirects to the book's show page with a flash notice. On failure,
+      # re-renders {Bookshelf::Views::Books::Edit} (status 200) with a flash alert.
+      #
+      # @see Bookshelf::Actions::Books::Edit
       class Update < Bookshelf::Action
         include Deps["repos.book_repo"]
 
-        # Updates the book, then redirects to its show page.
-        #
-        # @param request [Hanami::Action::Request] `params[:id]` is the
-        #   book's id, `params[:book]` holds the attributes to change
-        # @param response [Hanami::Action::Response]
-        # @return [void]
-        # @raise [ROM::TupleCountMismatchError] if no book has that id
+        params do
+          required(:id).filled(:integer)
+          required(:book).hash do
+            required(:title).filled(:string)
+            required(:author).filled(:string)
+          end
+        end
+
+        # @api private
         def handle(request, response)
-          id = request.params[:id].to_i
-          book_repo.update(id, request.params[:book].to_h)
-          response.flash[:notice] = "Book was successfully updated."
-          response.redirect_to("/books/#{id}", status: 303)
+          if request.params.valid?
+            book = book_repo.update(request.params[:id], request.params[:book])
+            response.flash[:notice] = "Book was successfully updated"
+            response.redirect_to routes.path(:book, id: book[:id])
+          else
+            response.flash.now[:alert] = "Could not update book"
+          end
         end
       end
     end

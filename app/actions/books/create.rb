@@ -3,23 +3,31 @@
 module Bookshelf
   module Actions
     module Books
-      # `POST /books` — ported from Rails' `BooksController#create`. The
-      # Rails `Book` model has no validations, so (unlike a typical Rails
-      # scaffold) there's no failure branch to handle — `book_repo.create`
-      # always succeeds.
+      # `POST /books` — creates a book from `book: {title:, author:}` params.
+      #
+      # On success, redirects to the new book's show page with a flash notice. On failure,
+      # re-renders {Bookshelf::Views::Books::New} (status 200) with a flash alert.
+      #
+      # @see Bookshelf::Actions::Books::New
       class Create < Bookshelf::Action
         include Deps["repos.book_repo"]
 
-        # Creates the book, then redirects to its show page.
-        #
-        # @param request [Hanami::Action::Request] `params[:book]` holds
-        #   `:title`/`:author`
-        # @param response [Hanami::Action::Response]
-        # @return [void]
+        params do
+          required(:book).hash do
+            required(:title).filled(:string)
+            required(:author).filled(:string)
+          end
+        end
+
+        # @api private
         def handle(request, response)
-          book = book_repo.create(request.params[:book].to_h)
-          response.flash[:notice] = "Book was successfully created."
-          response.redirect_to("/books/#{book.id}")
+          if request.params.valid?
+            book = book_repo.create(request.params[:book])
+            response.flash[:notice] = "Book was successfully created"
+            response.redirect_to routes.path(:book, id: book[:id])
+          else
+            response.flash.now[:alert] = "Could not create book"
+          end
         end
       end
     end

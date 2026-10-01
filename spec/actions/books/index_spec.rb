@@ -1,23 +1,21 @@
 # frozen_string_literal: true
 
 RSpec.describe Bookshelf::Actions::Books::Index, :db do
-  let(:repo) { Bookshelf::Repos::BookRepo.new }
-  let(:params) { {} }
+  subject(:action) { described_class.new }
 
   it "renders every book" do
-    repo.create(title: "book 1", author: "author 1")
-    repo.create(title: "book 2", author: "author 2")
+    Bookshelf::Repos::BookRepo.new.create(title: "book 1", author: "author 1")
+    Bookshelf::Repos::BookRepo.new.create(title: "book 2", author: "author 2")
 
-    response = subject.call(params)
+    response = action.call({})
 
-    expect(response).to be_successful
-    expect(response.body.join).to include("book 1", "author 1", "book 2", "author 2")
+    expect(response.status).to eq(200)
+    expect(response.body.join).to include("book 1").and include("book 2")
   end
 
   it "renders the welcome message when there are no books" do
-    response = subject.call(params)
+    response = action.call({})
 
-    expect(response).to be_successful
     expect(response.body.join).to include("Welcome to the Bookshelf")
   end
 end

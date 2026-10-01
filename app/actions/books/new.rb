@@ -3,15 +3,14 @@
 module Bookshelf
   module Actions
     module Books
-      # `GET /books/new` — ported from Rails' `BooksController#new`. No
-      # exposure needed — the paired view ({Bookshelf::Views::Books::New})
-      # provides its own blank book.
+      # `GET /books/new` — renders the empty new-book form.
+      #
+      # Has no logic of its own: {Bookshelf::Views::Books::New} exposes the (empty) form fields.
+      #
+      # @see Bookshelf::Views::Books::New
+      # @see Bookshelf::Actions::Books::Create
       class New < Bookshelf::Action
-        # No-op — the paired view supplies its own blank book.
-        #
-        # @param request [Hanami::Action::Request]
-        # @param response [Hanami::Action::Response]
-        # @return [void]
+        # @api private
         def handle(request, response)
         end
       end
