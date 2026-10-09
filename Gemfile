@@ -3,8 +3,10 @@
 source "https://rubygems.org"
 
 gem "hanami", "~> 3.0.0"
+gem "hanami-assets", "~> 3.0.0"
 gem "hanami-action", "~> 3.0.0"
 gem "hanami-db", "~> 3.0.0"
+gem "hanami-mailer", "~> 3.0.0"
 gem "hanami-router", "~> 3.0.0"
 gem "hanami-view", "~> 3.0.0"
 
@@ -18,7 +20,7 @@ gem "sqlite3"
 
 group :development do
   gem "hanami-webconsole", "~> 3.0.0"
-  gem "yard"
+  gem "yard", "~> 0.9"
 end
 
 group :development, :test do
@@ -33,13 +35,5 @@ end
 
 group :cli, :development, :test do
   gem "hanami-rspec", "~> 3.0.0"
-end
-
-group :test do
-  # Database
-  gem "database_cleaner-sequel"
-
-  # Web integration
-  gem "capybara"
-  gem "rack-test"
+  gem "capybara", "~> 3.0"
 end

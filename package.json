@@ -1,0 +1,12 @@
+{
+  "name": "bookshelf",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "esbuild": "^0.28.1",
+    "hanami-assets": "^3.0.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

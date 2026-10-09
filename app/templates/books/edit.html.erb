@@ -1,12 +1,11 @@
-<% content_for :title, "Editing book" %>
-
+<%# app/templates/books/edit.html.erb -- Hanami port; renders the _form partial for update. %>
 <h1>Editing book</h1>
 
-<%= render "form", book: book %>
+<%= render "form", routes: routes, book: book, submit_label: "Update Book" %>
 
 <br>
 
 <div>
-  <a href="/books/<%= book.id %>">Show this book</a> |
-  <a href="/books">Back to books</a>
+  <%= link_to "Show this book", routes.path(:book, id: book.id) %> |
+  <%= link_to "Back to books", routes.path(:books) %>
 </div>

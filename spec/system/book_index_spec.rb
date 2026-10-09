@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
-# Ported near-verbatim from the Rails app's spec/system/book_index_spec.rb
-# (type: :system -> type: :feature, ActiveRecord -> BookRepo).
-RSpec.describe "books/", type: :feature do
+# Hanami port of the original `spec/system/book_index_spec.rb`.
+#
+# STATUS: `books#index` is not wired, so `/books` returns a 404 -- red on the
+# content assertions.
+RSpec.describe "books/", type: :system do
   it "visits the home page and shows a welcome message" do
     visit "/books"
 
@@ -10,9 +12,9 @@ RSpec.describe "books/", type: :feature do
   end
 
   it "shows books on the index" do
-    repo = Bookshelf::Repos::BookRepo.new
-    repo.create(title: "book 1", author: "author 1")
-    repo.create(title: "book 2", author: "author 2")
+    create_book(title: "book 1", author: "author 1")
+    create_book(title: "book 2", author: "author 2")
+
     visit "/books"
 
     expect(page).to have_content "Title: book 1"

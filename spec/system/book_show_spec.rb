@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-# Ported near-verbatim from the Rails app's spec/system/book_show_spec.rb
-# (type: :system -> type: :feature, ActiveRecord -> BookRepo).
-RSpec.describe "book/", type: :feature do
+# Hanami port of the original `spec/system/book_show_spec.rb`.
+#
+# STATUS: `books#show` is not wired, so `/books/:id` returns a 404 -- red on the
+# content assertions.
+RSpec.describe "book/", type: :system do
   it "visits the book show page" do
-    repo = Bookshelf::Repos::BookRepo.new
-    book = repo.create(title: "book 1", author: "author 1")
-    repo.create(title: "book 2", author: "author 2")
+    book = create_book(title: "book 1", author: "author 1")
+    create_book(title: "book 2", author: "author 2")
     visit "/books/#{book.id}"
 
     expect(page).to have_content "Title: book 1"

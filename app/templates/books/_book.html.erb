@@ -1,11 +1,13 @@
-<div id="<%= dom_id(book) %>">
-  <p>
-    <strong>Author:</strong>
-    <%= book.author %>
-  </p>
+<%# app/templates/books/_book.html.erb -- renders one book (id: book_<id>); whitespace inside the <p> blocks mirrors the Rails original for Capybara parity. %>
+<div id="book_<%= book.id %>">
+   <p>
+     <strong>Author:</strong>
+     <%= book.author %>
+   </p>
 
-  <p>
-    <strong>Title:</strong>
-    <%= book.title %>
-  </p>
+   <p>
+     <strong>Title:</strong>
+     <%= book.title %>
+   </p>
+
 </div>
