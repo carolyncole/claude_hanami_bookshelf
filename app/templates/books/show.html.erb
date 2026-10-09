@@ -1,13 +1,16 @@
+<%# app/templates/books/show.html.erb -- reuses the _book partial.
+    The destroy form posts to the member route with a hidden _method=delete,
+    which Hanami's method-override middleware (method_override: true) rewrites
+    to a real DELETE. routes.path(...) stands in for Rails path helpers. %>
 <p style="color: green"><%= notice %></p>
 
 <%= render "book", book: book %>
 
 <div>
-  <a href="/books/<%= book.id %>/edit">Edit this book</a> |
-  <a href="/books">Back to books</a>
-
-  <form action="/books/<%= book.id %>" method="post" style="display: inline">
-    <input type="hidden" name="_method" value="delete">
-    <button type="submit">Destroy this book</button>
-  </form>
-</div>
+    <%= link_to "Edit this book", routes.path(:edit_book, id: book.id) %> |
+    <%= link_to "Back to books", routes.path(:books) %>
+    <form action="<%= routes.path(:book, id: book.id) %>" method="post">
+       <input type="hidden" name="_method" value="delete">
+       <button type="submit">Destroy this book</button>
+     </form>
+  </div>

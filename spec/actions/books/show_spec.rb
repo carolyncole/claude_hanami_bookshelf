@@ -1,13 +1,25 @@
 # frozen_string_literal: true
 
-RSpec.describe Bookshelf::Actions::Books::Show, :db do
-  let(:book) { Bookshelf::Repos::BookRepo.new.create(title: "book 1", author: "author 1") }
-  let(:params) { {"id" => book.id.to_s} }
+# Action-level spec for `GET /books/:id` (plus the `set_book` before-action).
+RSpec.describe Bookshelf::Actions::Books::Show, type: :db do
+  subject(:repo) { Bookshelf::Repos::BookRepo.new }
 
-  it "renders the requested book" do
-    response = subject.call(params)
+  describe "GET /books/:id" do
+    it "renders 200 with the book when it exists" do
+      book = repo.create(title: "The Song", author: "C. Cole").value!
 
-    expect(response).to be_successful
-    expect(response.body.join).to include("book 1", "author 1")
+      response = request(path: "/books/#{book.id}")
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include(book.title, book.author)
+      expect(response.body).to include("Edit this book", "Destroy this book")
+    end
+
+    it "returns 404 with a plain body when the id does not exist" do
+      response = request(path: "/books/9_999")
+
+      expect(response.status).to eq(404)
+      expect(response.body).to eq("Book not found")
+    end
   end
 end

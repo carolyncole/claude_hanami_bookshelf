@@ -1,24 +1,31 @@
 # frozen_string_literal: true
 
+# Hanami port of `BooksController#index` (`@books = Book.all`).
 module Bookshelf
-  # HTTP actions, one per Rails controller action.
   module Actions
-    # Actions for the `Book` resource.
     module Books
-      # `GET /books` and `GET /` — ported from Rails' `BooksController#index`.
+         # Lists every book and renders the {Bookshelf::Views::Books::Index} view.
+         #
+         # @see Bookshelf::Views::Books::Index
+         # @api public
       class Index < Bookshelf::Action
-        include Deps["repos.book_repo"]
+              # Handles an HTTP GET against `GET /books`.
+              #
+              # Loads every book through the repository and renders the index
+              # view, exposing the collection plus the shared `routes` and
+              # `notice` helpers.
+              #
+              # @return [void] always renders HTTP 200 with the index page
+            def handle(request, response)
+              books = books_repo.all
 
-        # Exposes every book, plus any flash notice, to the paired view
-        # ({Bookshelf::Views::Books::Index}).
-        #
-        # @param request [Hanami::Action::Request]
-        # @param response [Hanami::Action::Response]
-        # @return [void]
-        def handle(request, response)
-          response[:books] = book_repo.all
-          response[:notice] = request.flash[:notice]
-        end
+              response.render(
+                Bookshelf::Views::Books::Index.new,
+                books: books,
+                routes: routes,
+                notice: notice(request),
+                 )
+            end
       end
     end
   end

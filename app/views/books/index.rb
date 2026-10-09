@@ -3,12 +3,26 @@
 module Bookshelf
   module Views
     module Books
-      # Presenter for the books index page. Ported from Rails'
-      # app/views/books/index.html.erb — `@books` becomes the `books`
-      # exposure, flash `notice` becomes a plain exposure (nil until the
-      # index action sets it from flash).
-      class Index < Bookshelf::View
+       # Renders `GET /books`.
+       #
+       # Rails original: `app/views/books/index.html.erb`, fed by
+       # `BooksController#index`'s `@books = Book.all`.
+       #
+       # In Hanami the list is the `Route`'s job to supply; this view only
+       # declares which locals the template may read:
+       #
+       #   - `books` -- the `{Bookshelf::Structs::Book}` list
+       #   - `routes` -- the URL helper, used for the "Show"/"New book" links
+       #   - `notice` -- the green flash banner (may be nil)
+       #
+       # @see app/templates/books/index.html.erb
+       #
+       # @api public
+      class Index < View
+        config.template = "books/index"
+
         expose :books
+        expose :routes
         expose :notice
       end
     end
